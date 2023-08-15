@@ -1,6 +1,7 @@
 import React from 'react';
 
-// This component renders a card for a movie with its title, poster image, rating, and overview
+// This component renders a card for a movie with its title,
+//  poster image, rating, and overview
 const MovieCard = ({ title, description, posterURL, rating }) => {
   return (
     <div className="movie-card">

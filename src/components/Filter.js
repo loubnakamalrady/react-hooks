@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// This component renders a filter form with a text input for filtering by 
-// title and a number input for filtering by rating
-const Filter = ({ title, rate, onTitleChange, onRateChange }) => {
+const Filter = ({ onFilter }) => {
+  const [title, setTitle] = useState('');
+  const [rating, setRating] = useState('');
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleRatingChange = (event) => {
+    setRating(event.target.value);
+  };
+
+  const handleFilter = () => {
+    // Call the onFilter function with the title and rating values
+    onFilter(title, rating);
+  };
+
   return (
     <div className="filter">
-      <input type="text" placeholder="Filter by title" value={title} onChange={onTitleChange} />
-      <input type="number" placeholder="Filter by rating" min="0" max="10" value={rate} onChange={onRateChange} />
+      {/* Input field to filter movies by title */}
+      <input
+        type="text"
+        placeholder="Filter by title"
+        value={title}
+        onChange={handleTitleChange}
+      />
+      {/* Input field to filter movies by rating */}
+```jsx
+      <input
+        type="number"
+        placeholder="Filter by rating"
+        value={rating}
+        onChange={handleRatingChange}
+      />
+      {/* Button to apply the filter */}
+      <button onClick={handleFilter}>Filter</button>
     </div>
   );
 };
